@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 50px;
+        }
+
+        .countdown-container {
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #333;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .countdown {
+            font-size: 150px;
+            font-weight: bold;
+        }
+
+        .label {
+            font-size: 18px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Fraud Esa Retirement !</h1>
+    <div class="countdown-container">
+        <div class="countdown" id="countdown"></div>
+        <div class="label">Days : Hours : Minutes : Seconds</div>
+    </div>
+
+    <script>
+        // Set the date for countdown
+        var countdownDate = new Date("oct 26, 2024 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var timeLeft = countdownDate - now;
+
+            // Calculate time components
+            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = days + " : " + hours + " : "
+            + minutes + " : " + seconds;
+
+            // If the countdown is finished, display some text
+            if (timeLeft < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+    
+</body>
+</html>
